@@ -13,7 +13,9 @@ On the client side material-ui has been used to provide the look-and-feel. State
 Install Node.js 
 
 `npm i`
+
 `npm run populate`
+
 `npm run build`
 
 ### To start

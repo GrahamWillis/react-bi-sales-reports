@@ -1,0 +1,5 @@
+.git
+node_modules
+dist/*.js
+dist/*.png
+server/model/sales.json

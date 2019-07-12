@@ -1,0 +1,46 @@
+{
+  "name": "ReactWithRedux",
+  "version": "1.0.0",
+  "description": "based on https://www.robinwieruch.de/react-redux-tutorial/#react-redux-starter-kit",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "populate": "node ./server/model/sales-gen.js",
+    "try": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
+    "apollo-server-hapi": "^2.4.8",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "clsx": "^1.0.4",
+    "graphql": "^14.3.0",
+    "hapi": "^17.8.1",
+    "inert": "^5.1.2",
+    "install": "^0.12.2",
+    "npm": "^6.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "star-search": "^1.0.8",
+    "typeface-roboto": "0.0.54"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.1.1",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "file-loader": "^3.0.1",
+    "standard": "^12.0.1",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

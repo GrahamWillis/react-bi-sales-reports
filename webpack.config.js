@@ -1,5 +1,5 @@
 const config = {
-  mode: 'development',
+  mode: 'none',
   entry: [ './client/index.js' ],
   module: {
     rules: [

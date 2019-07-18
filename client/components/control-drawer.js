@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
@@ -11,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import DoneIcon from '@material-ui/icons/Done'
 import HighlightOff from '@material-ui/icons/HighlightOff'
-import HomeIcon from '@material-ui/icons/Home'
 
 const useStyles = makeStyles(theme => ({
   drawerPaper: {
@@ -121,15 +119,7 @@ const ControlDrawer = (props) => {
 
   const classes = useStyles()
   return (
-    <Drawer variant='permanent' className={classes.drawerPaper}>
-      <div className={classes.toolbarIcon} />
-      <Divider />
-      <Tooltip title='Click to reset'>
-        <IconButton onClick={() => reset()}>
-          <HomeIcon />
-        </IconButton>
-      </Tooltip>
-      <Divider />
+    <div>
       {dimensions.map((dim, i) =>
         <Paper key={i} className={classes.paper} elevation={1}>
           <Dimension
@@ -142,7 +132,7 @@ const ControlDrawer = (props) => {
             dimension={dim} />
         </Paper>
       )}
-    </Drawer>
+    </div>
   )
 }
 

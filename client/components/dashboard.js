@@ -52,6 +52,7 @@ function Dashboard (props) {
     })()
   }, [dimensions, excluded])
 
+  // Filter dimension items by the dimension name
   const filterDimensionItems = (dim) => Object.assign({}, Object.keys(dimensionItems).filter(r => dim.includes(r)).reduce((o, k) => {
     return {
       ...o,
@@ -69,6 +70,7 @@ function Dashboard (props) {
     })()
   }, [colDimensions, rowDimensions, excluded])
 
+  // Filter excluded dimension items
   const filterExcluded = (dimensionItems, excluded) => {
     if (!dimensionItems) {
       return []

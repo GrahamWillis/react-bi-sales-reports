@@ -1,7 +1,6 @@
 {
   "name": "bi-sales-reports",
   "version": "1.0.0",
-  "description": "based on https://www.robinwieruch.de/react-redux-tutorial/#react-redux-starter-kit",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -26,6 +25,7 @@
     "npm": "^6.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "recharts": "^1.6.2",
     "star-search": "^1.0.8",
     "typeface-roboto": "0.0.54"
   },
@@ -35,7 +35,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
-    "eslint-plugin-react-hooks": "^1.6.1",
+    "eslint-plugin-react-hooks": "~1.6.1",
     "file-loader": "^4.0.0",
     "standard": "^13.0.2",
     "style-loader": "^0.23.1",

@@ -1,6 +1,6 @@
 const config = {
   mode: 'none',
-  entry: [ './client/index.js' ],
+  entry: ['./client/index.js'],
   module: {
     rules: [
       {

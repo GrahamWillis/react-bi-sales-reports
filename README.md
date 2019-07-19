@@ -27,4 +27,13 @@ http://localhost:8080
 ##### The server
 http://localhost:8080/graphql
 
+To do:
+- Choose a good colour palette for the chart.
+- Add drop and click interactions for the chart
+- Fix auto-scaling
+- Dockerize
+- Deploy to AWS
+- Write Blog
+ 
+
 

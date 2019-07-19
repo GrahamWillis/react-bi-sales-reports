@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { serverQuery, buildFactGrapQl } from '../api/graphql'
 import ControlDrawer from './control-drawer'
 import Report from './report'
+import ReportBarChart from './bar-chart'
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
@@ -18,6 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Tooltip from '@material-ui/core/Tooltip'
 import HomeIcon from '@material-ui/icons/Home'
+import { SizeMe } from 'react-sizeme'
 
 const drawerWidth = 300
 
@@ -246,7 +248,6 @@ function Dashboard (props) {
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper>
-
                 <Report
                   rowDimensions={rowDimensions}
                   setRowDimensions={setRowDimensions}
@@ -257,16 +258,17 @@ function Dashboard (props) {
                   setExcluded={setExcluded}
                   results={results}
                 />
-
               </Paper>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={6}>
-              <Paper className={fixedHeightPaper} />
-            </Grid>
-
-            <Grid item xs={12} md={6} lg={6}>
-              <Paper className={fixedHeightPaper} />
+            <Grid item xs={12} md={12} lg={12}>
+              <Paper className={fixedHeightPaper}>
+                <ReportBarChart
+                  rowDimensionItems={filterExcluded(rowDimensionItems, excluded)}
+                  colDimensionItems={filterExcluded(colDimensionItems, excluded)}
+                  results={results}
+                />
+              </Paper>
             </Grid>
           </Grid>
         </Container>

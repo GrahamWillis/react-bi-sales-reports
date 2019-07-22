@@ -11,9 +11,19 @@ const ReportBarChart = (props) => {
   const data = []
   const keys = []
   const dimensionItems = Object.assign({}, rowDimensionItems, colDimensionItems)
-  const colours = ['#cccf63', '#448ca9', '#1811ad', '#9b3228', '#d78988', '#9de213', '#aab8aa', '#043a2e',
-    '#12a901', '#19bc58', '#4db6d6', '#a3c312', '#1ab5ab', '#c0266a', '#b472ac', '#6d63fe', '#a8f609',
-    '#9fe290', '#9f5169', '#9da66e', '#988bcf', '#721ad5', '#b7c388', '#84a6b8', '#7eb495']
+  const colours = [
+    '#FE2712',
+    '#FC600A',
+    '#FB9902',
+    '#FCCC1A',
+    '#FEFE33',
+    '#B2D732',
+    '#66B032',
+    '#347C98',
+    '#0247FE',
+    '#4424D6',
+    '#8601AF',
+    '#C21460'] // RYB basic colour set
 
   if (Object.keys(dimensionItems).includes('year')) {
     if (Object.keys(dimensionItems).length > 1) {

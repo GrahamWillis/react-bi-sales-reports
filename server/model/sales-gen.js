@@ -1,7 +1,7 @@
 const fs = require('fs')
 const dimensions = require('./dimensions')
 
-const FACT_SIZE = 10000
+const FACT_SIZE = 50000
 const salesData = []
 
 const colours = dimensions.colour.items

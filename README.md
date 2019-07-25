@@ -35,5 +35,5 @@ To do:
 - Deploy to AWS
 - Write Blog
  
-
-
+docker build -t=dashboard .
+docker run -p 3000:8080 dashboard

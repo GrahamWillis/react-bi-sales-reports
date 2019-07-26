@@ -30,7 +30,6 @@ http://localhost:8080/graphql
 ##### Docker
 docker build -t=dashboard .
 docker run -p 3000:8080 dashboard
-docker-compose up -d
 
 To do:
 - Add drop and click interactions for the chart

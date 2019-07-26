@@ -274,9 +274,13 @@ function Dashboard (props) {
 
             <Grid item xs={12} md={12} lg={2}>
               <Paper className={minHeightPaper}>
-                <Typography variant='h6' color='primary'>Records</Typography>
+                <Typography variant='h6' color='primary'>Total</Typography>
                 <Typography variant='subtitle1'>
                   {results.result && results.result.length ? results.result.reduce((a, c) => a + c.volume, 0).toLocaleString() : 0}
+                </Typography>
+                <Typography variant='h6' color='primary'>Factor of aggregation</Typography>
+                <Typography variant='subtitle1'>
+                  {results.result && results.result.length ? results.result.reduce((a, c) => a + 1, 0).toLocaleString() : 0}
                 </Typography>
               </Paper>
             </Grid>

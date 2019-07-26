@@ -27,13 +27,13 @@ http://localhost:8080
 ##### The server
 http://localhost:8080/graphql
 
-To do:
-- Choose a good colour palette for the chart.
-- Add drop and click interactions for the chart
-- Fix auto-scaling
-- Dockerize
-- Deploy to AWS
-- Write Blog
- 
+##### Docker
 docker build -t=dashboard .
 docker run -p 3000:8080 dashboard
+docker-compose up -d
+
+To do:
+- Add drop and click interactions for the chart
+- Improve auto-scaling
+ 
+

@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles/index'
 
 const useStyles = makeStyles(() => ({
   table: {
-    minWidth: 650
+    minWidth: 200
   }
 }))
 

@@ -65,7 +65,7 @@ function DimensionItems (props) {
       {dimensionItems[dimension.name] && dimensionItems[dimension.name].map(i =>
         <ListItem key={i.id}>
           <div className={classes.itemName}>
-            <Typography inline={'inline'} variant={'subtitle1'} >{i.name}</Typography>
+            <Typography inline={'inline'} variant={'caption'} >{i.name}</Typography>
           </div>
 
           <Tooltip title={excluded.find(e => e.id === i.id && e.dimension === dimension.name) ? 'Click to include' : 'Click to exclude'}>

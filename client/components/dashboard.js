@@ -97,7 +97,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto',
     flexDirection: 'column'
   },
-  fixedHeight: {
+  paperHeight: {
     height: 240
   }
 }))
@@ -187,8 +187,9 @@ function Dashboard (props) {
   const handleDrawerClose = () => {
     setOpen(false)
   }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const minHeightPaper = clsx(classes.paper, classes.paperHeight)
 
+  console.log({ results })
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -244,7 +245,7 @@ function Dashboard (props) {
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth='lg' className={classes.container}>
+        <Container maxWidth='xl' className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper>
@@ -261,8 +262,8 @@ function Dashboard (props) {
               </Paper>
             </Grid>
 
-            <Grid item xs={12} md={12} lg={12}>
-              <Paper className={fixedHeightPaper}>
+            <Grid item xs={12} md={12} lg={10}>
+              <Paper className={minHeightPaper}>
                 <ReportBarChart
                   rowDimensionItems={filterExcluded(rowDimensionItems, excluded)}
                   colDimensionItems={filterExcluded(colDimensionItems, excluded)}
@@ -270,6 +271,16 @@ function Dashboard (props) {
                 />
               </Paper>
             </Grid>
+
+            <Grid item xs={12} md={12} lg={2}>
+              <Paper className={minHeightPaper}>
+                <Typography variant='h6' color='primary'>Records</Typography>
+                <Typography variant='subtitle1'>
+                  {results.result && results.result.length ? results.result.reduce((a, c) => a + c.volume, 0).toLocaleString() : 0}
+                </Typography>
+              </Paper>
+            </Grid>
+
           </Grid>
         </Container>
       </main>

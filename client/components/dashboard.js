@@ -189,7 +189,6 @@ function Dashboard (props) {
   }
   const minHeightPaper = clsx(classes.paper, classes.paperHeight)
 
-  console.log({ results })
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -237,6 +236,8 @@ function Dashboard (props) {
           dimensionItems={dimensionItems}
           rowDimensions={rowDimensions}
           colDimensions={colDimensions}
+          setRowDimensions={setRowDimensions}
+          setColDimensions={setColDimensions}
           excluded={excluded}
           setExcluded={setExcluded}
         />

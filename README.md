@@ -32,7 +32,9 @@ docker build -t=dashboard .
 docker run -p 3000:8080 dashboard
 
 To do:
+- Make control lists collapsible 
+- Refine for non drag-and-drop devices
+- Improve auto-scaling for smaller devices
+- obtain ssl certs
 - Add drop and click interactions for the chart
-- Improve auto-scaling
- 
 

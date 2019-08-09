@@ -8,16 +8,16 @@ const CellContainer = (WrappedComponent) => {
     const add = (d, after, dimensions, setter) => {
       if (!dimensions.includes(d)) {
         if (after) {
-          let posA = dimensions.findIndex(h => h === after)
+          const posA = dimensions.findIndex(h => h === after)
           dimensions.splice(posA + 1, 0, d)
         } else {
           dimensions.push(d)
         }
       } else {
         if (after) {
-          let posD = dimensions.findIndex(h => h === d)
+          const posD = dimensions.findIndex(h => h === d)
           dimensions.splice(posD, 1)
-          let posA = dimensions.findIndex(h => h === after)
+          const posA = dimensions.findIndex(h => h === after)
           dimensions.splice(posA + 1, 0, d)
         }
       }

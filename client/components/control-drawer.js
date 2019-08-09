@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import Paper from '@material-ui/core/Paper'
 import DragIndicator from '@material-ui/icons/DragIndicator'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import DoneIcon from '@material-ui/icons/Done'
 import HighlightOff from '@material-ui/icons/HighlightOff'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
+import Divider from '@material-ui/core/Divider'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
+import Report from './report'
 
 const useStyles = makeStyles(theme => ({
   drawerPaper: {
@@ -37,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   dimHeader: {
     display: 'inline-block',
-    width: 155
+    width: 200
   },
   itemName: {
     display: 'inline-block',
@@ -81,56 +88,88 @@ function DimensionItems (props) {
 }
 
 function Dimension (props) {
-  const { dimension, excluded, setExcluded, rowDimensions, colDimensions, dimensionItems } = props
+  const { dimension, dimensionItems, excluded, setExcluded, rowDimensions, colDimensions,
+    setRowDimensions, setColDimensions } = props
+
   const classes = useStyles()
   const dragStart = e => {
     e.dataTransfer.setData('origin', 'DIMENSION')
     e.dataTransfer.setData('dimension', dimension.name)
   }
 
-  return (<div>
+  const handleChange = (event, val) => {
+    const { dimensions, setter, other: otherDimensions, otherSetter } = val === 'col'
+      ? { dimensions: colDimensions, setter: setColDimensions, other: rowDimensions, otherSetter: setRowDimensions }
+      : { dimensions: rowDimensions, setter: setRowDimensions, other: colDimensions, otherSetter: setColDimensions }
 
-    <div className={classes.dimHeader}>
-      <Typography inline={'true'} color={'primary'} variant={'h5'} >{dimension.description}</Typography>
-    </div>
-
-    {rowDimensions.concat(colDimensions).includes(dimension.name) ||
-    <Tooltip title='Drag to add to report' aria-label='Add'>
-      <IconButton draggable='true' onDragStart={(e) => dragStart(e)}>
-        <DragIndicator />
-      </IconButton>
-    </Tooltip>
+    if (dimensions.includes(dimension.name)) {
+      setter(JSON.parse(JSON.stringify(dimensions.filter(d => dimension.name !== d))))
+    } else {
+      if (otherDimensions.includes(dimension.name)) {
+        otherSetter(JSON.parse(JSON.stringify(otherDimensions.filter(d => dimension.name !== d))))
+      }
+      dimensions.push(dimension.name)
+      setter(JSON.parse(JSON.stringify(dimensions)))
     }
+  }
+
+  return (<ExpansionPanel>
+
+    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      <div>
+        <div className={classes.dimHeader}>
+          <Typography inline={'true'} color={'primary'} variant={'subtitle1'} >{dimension.description}</Typography>
+        </div>
+
+        {rowDimensions.concat(colDimensions).includes(dimension.name) ||
+        <Tooltip title='Drag to add to report' aria-label='Add'>
+          <IconButton size='small' draggable='true' onDragStart={(e) => dragStart(e)}>
+            <DragIndicator />
+          </IconButton>
+        </Tooltip>
+        }
+      </div>
+    </ExpansionPanelSummary>
 
     <Divider />
 
-    <DimensionItems
-      dimension={dimension}
-      dimensionItems={dimensionItems}
-      excluded={excluded}
-      setExcluded={setExcluded}
-    />
+    <ExpansionPanelDetails>
+      <DimensionItems
+        dimension={dimension}
+        dimensionItems={dimensionItems}
+        excluded={excluded}
+        setExcluded={setExcluded}
+      />
+    </ExpansionPanelDetails>
 
-  </div>)
+    <Divider />
+    <ExpansionPanelActions>
+      <ToggleButtonGroup exclusive onChange={handleChange} size={'small'}>
+        <ToggleButton value='row' size='small' selected={rowDimensions.includes(dimension.name)}>Row</ToggleButton>
+        <ToggleButton value='col' size='small' selected={colDimensions.includes(dimension.name)}>Col</ToggleButton>
+      </ToggleButtonGroup>
+    </ExpansionPanelActions>
+
+  </ExpansionPanel>)
 }
 
 const ControlDrawer = (props) => {
-  const { dimensions, excluded, setExcluded, rowDimensions, colDimensions, dimensionItems, reset } = props
+  const { dimensions, excluded, setExcluded, rowDimensions, setRowDimensions,
+    colDimensions, setColDimensions, dimensionItems } = props
 
-  const classes = useStyles()
   return (
     <div>
       {dimensions.map((dim, i) =>
-        <Paper key={i} className={classes.paper} elevation={1}>
-          <Dimension
-            key={i}
-            rowDimensions={rowDimensions}
-            colDimensions={colDimensions}
-            dimensionItems={dimensionItems}
-            excluded={excluded}
-            setExcluded={setExcluded}
-            dimension={dim} />
-        </Paper>
+        <Dimension
+          key={i}
+          rowDimensions={rowDimensions}
+          colDimensions={colDimensions}
+          setRowDimensions={setRowDimensions}
+          setColDimensions={setColDimensions}
+          dimensionItems={dimensionItems}
+          excluded={excluded}
+          setExcluded={setExcluded}
+          dimension={dim} />
       )}
     </div>
   )

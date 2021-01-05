@@ -16,7 +16,7 @@
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.22",
     "apollo-server-hapi": "^2.6.9",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "clsx": "^1.0.4",
     "graphql": "^14.4.2",

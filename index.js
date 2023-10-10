@@ -22,6 +22,12 @@ const app = new Hapi.Server({
 
   app.route({
     method: 'GET',
+    path: '/health',
+    handler: (request, h) => 'healthy: ' + app.info.host
+  })
+
+  app.route({
+    method: 'GET',
     path: '/{param*}',
     handler: {
       directory: {
